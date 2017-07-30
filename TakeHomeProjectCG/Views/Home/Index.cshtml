@@ -12,7 +12,7 @@
             <th>Committer Name</th>
             <th>Committer Email</th>
             <th>Commit Message</th>
-            
+            <th></th>
             </thead>
             <tbody id="tableBody">
             
@@ -38,6 +38,7 @@
         });
 
         function update() {
+            var gitUrl = 'http://github.com/ctagg21/TakeHomeProjectCG/commit/';
             $.ajax({
                 type: 'GET',
                 url: 'https://api.github.com/repos/ctagg21/TakeHomeProjectCG/commits',
@@ -57,8 +58,9 @@
                                 '</td>' +
                                 '<td>' +
                                 data.commit.message +
-                               
-                                '</td></tr>';
+                                '<td><a href="' + gitUrl + 
+                                data.sha + 
+                                '">View on Github.com</a></td></tr>';
                             $('#tableBody').append(html.toString());
                         });
                 },
